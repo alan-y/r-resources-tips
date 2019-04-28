@@ -67,6 +67,17 @@ Sometimes you will need to format your data into a specific *shape* to make it w
 Then you can try the [Reshape Data tutorial on RStudio Cloud](https://rstudio.cloud/learn/primers/4.1). The main thing you need to be able to do with tidyr is to be confident in knowing how to transform your data from *wide-to-long* format or from *long-to-wide* format. However, if you want to know more about what tidyr can do or find out more about tidy data in general, please refer to the [tidy data chapter in the R for Data Science book](https://r4ds.had.co.nz/tidy-data.html) (keeping in mind the caveat made previously about the change to using pivoting functions).
 
 
+## Other Data Manipulation Tips
+As you progress further along with learning to manipulate data using the tidyverse, you will inevitably encounter situations where you need to know more about how to deal with specific types of data such as dates/times and string variables. In addition, there will also be times when you wish there was a convenient and quick way to process data – luckily there usually is in R.
+
+### Dates/Times
+The main package within the tidyverse for dealing with dates and times is the [lubridate](https://lubridate.tidyverse.org/reference/lubridate-package.html) package. The main reference text for learning about how to work with dates/times using lubridate is the [dates and times chapter in R for Data Science](https://r4ds.had.co.nz/dates-and-times.html). Dates/times can sometimes be very complex (e.g. when thinking about time calculations across timezones) but it is likely that you will usually only need to perform fairly simple data processing operations involving dates. In this case, you will only really need to know a small number of functions from lubridate:
+
+* `dmy()`, `mdy()`, `ymd()` to convert text to a Date format in R, e.g. `ymd("2001/05/20")` would convert the text "2001/05/20" so that R can recognise this as 20 May 2001.
+* `year()`, `month()`, `day()` to extract the year, month, day from a date object, e.g. `year(ymd("2001/05/20"))` would extract 2001.
+
+
+
 ## Further Resources
 [R for Data Science by Garrett Grolemund and Hadley Wickham](https://r4ds.had.co.nz)  
 [R for Data Science: Exercise Solutions by Jeffrey B. Arnold](https://jrnold.github.io/r4ds-exercise-solutions)

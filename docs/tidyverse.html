@@ -143,7 +143,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.1" data-path="tidyverse.html"><a href="tidyverse.html#working-with-multiple-datasets"><i class="fa fa-check"></i><b>2.3.1</b> Working with Multiple Datasets</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#reshaping-data-with-tidyr"><i class="fa fa-check"></i><b>2.4</b> Reshaping Data with tidyr</a></li>
-<li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#further-resources"><i class="fa fa-check"></i><b>2.5</b> Further Resources</a></li>
+<li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#other-data-manipulation-tips"><i class="fa fa-check"></i><b>2.5</b> Other Data Manipulation Tips</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="tidyverse.html"><a href="tidyverse.html#datestimes"><i class="fa fa-check"></i><b>2.5.1</b> Dates/Times</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#further-resources"><i class="fa fa-check"></i><b>2.6</b> Further Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="efficiency.html"><a href="efficiency.html"><i class="fa fa-check"></i><b>3</b> Efficiency</a><ul>
 <li class="chapter" data-level="3.1" data-path="efficiency.html"><a href="efficiency.html#main-resources"><i class="fa fa-check"></i><b>3.1</b> Main Resources</a></li>
@@ -238,8 +241,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a href="https://www.youtube.com/watch?v=1ELALQlO-yM&amp;list=PL9HYL-VRX0oQOWAFoKHFQAsWAI3ImbNPk&amp;index=2">Tidy Data and tidyr – Pt 2 Intro to Data Wrangling with R and the Tidyverse</a> – however please note that the <code>gather()</code> and <code>spread()</code> functions mentioned will be replaced by <a href="https://tidyr.tidyverse.org/dev/articles/pivot.html">pivoting functions</a> so you should mainly be concerned with the concepts here rather than learning about these functions specifically.</p>
 <p>Then you can try the <a href="https://rstudio.cloud/learn/primers/4.1">Reshape Data tutorial on RStudio Cloud</a>. The main thing you need to be able to do with tidyr is to be confident in knowing how to transform your data from <em>wide-to-long</em> format or from <em>long-to-wide</em> format. However, if you want to know more about what tidyr can do or find out more about tidy data in general, please refer to the <a href="https://r4ds.had.co.nz/tidy-data.html">tidy data chapter in the R for Data Science book</a> (keeping in mind the caveat made previously about the change to using pivoting functions).</p>
 </div>
+<div id="other-data-manipulation-tips" class="section level2">
+<h2><span class="header-section-number">2.5</span> Other Data Manipulation Tips</h2>
+<p>As you progress further along with learning to manipulate data using the tidyverse, you will inevitably encounter situations where you need to know more about how to deal with specific types of data such as dates/times and string variables. In addition, there will also be times when you wish there was a convenient and quick way to process data – luckily there usually is in R.</p>
+<div id="datestimes" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Dates/Times</h3>
+<p>The main package within the tidyverse for dealing with dates and times is the <a href="https://lubridate.tidyverse.org/reference/lubridate-package.html">lubridate</a> package. The main reference text for learning about how to work with dates/times using lubridate is the <a href="https://r4ds.had.co.nz/dates-and-times.html">dates and times chapter in R for Data Science</a>. Dates/times can sometimes be very complex (e.g. when thinking about time calculations across timezones) but it is likely that you will usually only need to perform fairly simple data processing operations involving dates. In this case, you will only really need to know a small number of functions from lubridate:</p>
+<ul>
+<li><code>dmy()</code>, <code>mdy()</code>, <code>ymd()</code> to convert text to a Date format in R, e.g. <code>ymd(&quot;2001/05/20&quot;)</code> would convert the text “2001/05/20” so that R can recognise this as 20 May 2001.</li>
+<li><code>year()</code>, <code>month()</code>, <code>day()</code> to extract the year, month, day from a date object, e.g. <code>year(ymd(&quot;2001/05/20&quot;))</code> would extract 2001.</li>
+</ul>
+</div>
+</div>
 <div id="further-resources" class="section level2">
-<h2><span class="header-section-number">2.5</span> Further Resources</h2>
+<h2><span class="header-section-number">2.6</span> Further Resources</h2>
 <p><a href="https://r4ds.had.co.nz">R for Data Science by Garrett Grolemund and Hadley Wickham</a><br />
 <a href="https://jrnold.github.io/r4ds-exercise-solutions">R for Data Science: Exercise Solutions by Jeffrey B. Arnold</a></p>
 
