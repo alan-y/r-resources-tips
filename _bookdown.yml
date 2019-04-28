@@ -1,7 +1,7 @@
-book_filename: "bookdown-start"
+book_filename: "R-Resources-Tips"
 chapter_name: "Chapter "
-repo: https://github.com/seankross/bookdown-start
+repo:
 output_dir: docs
-rmd_files: ["index.Rmd", "01-Introduction.Rmd", "02-Diving-In.Rmd"]
+rmd_files: ["index.Rmd", "01-Getting-Started.Rmd", "02-Tidyverse.Rmd", "03-Efficiency.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 new_session: yes

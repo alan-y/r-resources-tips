@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>R Training Resources and Tips</title>
+  <title>Chapter 3 Efficiency | R Training Resources and Tips</title>
   <meta name="description" content="Some R Training Resources and Tips.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="R Training Resources and Tips" />
+  <meta property="og:title" content="Chapter 3 Efficiency | R Training Resources and Tips" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="null" />
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="null" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R Training Resources and Tips" />
+  <meta name="twitter:title" content="Chapter 3 Efficiency | R Training Resources and Tips" />
   
   <meta name="twitter:description" content="Some R Training Resources and Tips." />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="tidyverse.html">
 
-<link rel="next" href="getting-started.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -179,25 +179,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R Training Resources and Tips</h1>
-<p class="author"><em>Alan Yeung</em></p>
-<p class="date"><em>28 April 2019</em></p>
+<div id="efficiency" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Efficiency</h1>
+<div id="main-resources" class="section level2">
+<h2><span class="header-section-number">3.1</span> Main Resources</h2>
+<p><a href="https://csgillespie.github.io/efficientR">Efficient R Programming by Colin Gillespie and Robin Lovelace</a>: This book goes into great depth on working efficiently in R.</p>
+<p><a href="https://arxiv.org/pdf/1503.00855v1.pdf">How to speed up R code: an introduction</a>: This resource is a little old (from 2015) but still contains some useful background on how to speed up R.</p>
 </div>
-<div id="introduction" class="section level1 unnumbered">
-<h1>Introduction</h1>
-<p>This is a list of R resources, links and tips that is being curated to help particularly with training on the <a href="https://www.tidyverse.org">Tidyverse</a> and working efficiently in R. A good place to get started with learning about R is the <a href="https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/Intro%20to%20R-NSS.md">PHI Introduction to R in NSS</a>. If you want to try out R without installing it, you can do this on <a href="https://rstudio.cloud">RStudio Cloud</a>.</p>
-<p>For the tidyverse section, I provide a recommended order to work through materials for training. However, it is, of course, not necessary to follow this exactly – particularly if you feel you are already comfortable with some of the material. I leave it to the reader/participant to use this as they see fit.</p>
-<p>Finally, this is a work-in-progress and will need updating over time. Therefore, if you have suggestions, comments or feedback, please get in touch.</p>
+<div id="processing" class="section level2">
+<h2><span class="header-section-number">3.2</span> Processing</h2>
+<div id="for-loops" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> For Loops</h3>
+<p>Never grow a vector, preallocate the size of objects used to store results.</p>
+<pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span><span class="kw">integer</span>(<span class="dv">50</span>)
 
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>) {
+    out[i] &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dv">10</span>)
+}</code></pre>
+<p>Use <a href="https://onunicornsandgenes.blog/2018/12/01/using-r-the-best-thing-ive-changed-about-my-code-in-years/">descriptive indices</a> in loops to make them easier to understand.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First attempt</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(geno)) {
+   <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(geno)) {
+        output[i,j] &lt;-<span class="st"> </span><span class="kw">do_something</span>(geno[j, i])
+   }
+}
+
+<span class="co"># Second attempt</span>
+n_markers &lt;-<span class="st"> </span><span class="kw">ncol</span>(geno)
+n_ind &lt;-<span class="st"> </span><span class="kw">nrow</span>(geno)
+<span class="cf">for</span> (marker_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_markers) {
+   <span class="cf">for</span> (individual_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_ind) {
+        output[individual_ix, marker_ix] &lt;-
+<span class="st">            </span><span class="kw">do_something</span>(geno[individual_ix, marker_ix])
+   }
+}</code></pre>
+<p>If you really need to a grow a vector:</p>
+<p><img src="images/tweet_grow_vec.png" width="60%" /></p>
+<p>Parallel Processing [need to do some research on this, see <a href="https://cran.r-project.org/web/packages/future/index.html">future</a> package].</p>
+<p><a href="http://adv-r.had.co.nz/Rcpp.html">Rcpp</a> - loops are faster using this.</p>
+</div>
+<div id="avoiding-loops" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Avoiding Loops</h3>
+<p>Avoid loops if you can, use functional programming, e.g. <code>purrr::map()</code>. <strong>Note</strong>: loops are not necessarily slower but leave more room for the user to write them inefficiently.</p>
+</div>
+<div id="finding-slow-parts-of-code" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Finding Slow Parts of Code</h3>
+<p>Profiling code - e.g. using <a href="https://rstudio.github.io/profvis"><code>profviz</code></a> (now built into the RStudio IDE)</p>
+<p>Benchmarking - e.g. with the <a href="http://bench.r-lib.org"><code>bench</code></a> package or the <a href="https://cran.r-project.org/web/packages/microbenchmark/index.html"><code>microbenchmark</code></a> package.</p>
+</div>
+</div>
+<div id="memory-management" class="section level2">
+<h2><span class="header-section-number">3.3</span> Memory Management</h2>
+<div id="efficiently-extracting-data-from-databases" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Efficiently Extracting Data from Databases</h3>
+<p>Extract only data necessary for analysis from databases [<strong>reference Emily Moore’s SMRA paper detailing efficient SQL queries</strong>].</p>
+<p>If you can use the <a href="https://db.rstudio.com/odbc"><code>odbc</code></a> package to connect to databases, you can use <a href="https://db.rstudio.com/dplyr"><code>dbplyr</code></a> to write efficient SQL queries using dplyr code. Once you are sure your query will extract what you need (view generated SQL code from dplyr using <code>show_query()</code>), the data can be downloaded into R using <a href="https://dplyr.tidyverse.org/reference/compute.html"><code>collect()</code></a>.</p>
+</div>
+<div id="temporary-objects" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Temporary Objects</h3>
+<p>Remove <em>temporary</em> objects as you go along in an analysis, particularly if those objects take up a lot of memory (e.g. temporary large dataframes). The <a href="https://cran.r-project.org/web/packages/objectremover/index.html">objectremover</a> RStudio addin may help with this.</p>
+</div>
+<div id="caching" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Caching</h3>
+<p><code>memoise</code> - more advanced.</p>
+</div>
+</div>
+<div id="importing-and-exporting-data" class="section level2">
+<h2><span class="header-section-number">3.4</span> Importing and Exporting Data</h2>
+<p>For critical analyses, I still find the base R functions (e.g. <code>read.csv()</code>) to be most reliable but <code>readr::read_csv()</code> is much faster.</p>
+<p><a href="https://github.com/jimhester/vroom">vroom</a> - experimental package using the <a href="https://svn.r-project.org/R/branches/ALTREP/ALTREP.html">ALTREP</a> framework but potentially extremely fast package for reading delimited files.</p>
+<p><a href="https://cran.r-project.org/web/packages/writexl/index.html">writexl</a> - the fastest package for writing to Excel and has no dependencies.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="tidyverse.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="getting-started.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,17 +1,21 @@
 --- 
-title: "A Minimal Bookdown Book"
-author: "Sean Kross"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
+title: "R Training Resources and Tips"
+author: "Alan Yeung"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+bibliography: book.bib
+description: Some R Training Resources and Tips.
 documentclass: book
-bibliography: [book.bib]
-biblio-style: apalike
+github-repo: null
 link-citations: yes
-github-repo: seankross/bookdown-start
-url: 'http\://seankross.com/bookdown-start/'
-description: "Everything you need (and nothing more) to start a bookdown book."
+site: bookdown::bookdown_site
+biblio-style: apalike
+url: null
 ---
 
-# Preface {-}
+# Introduction {-}
 
-This is the very first part of the book.
+This is a list of R resources, links and tips that is being curated to help particularly with training on the [Tidyverse](https://www.tidyverse.org) and working efficiently in R. A good place to get started with learning about R is the [PHI Introduction to R in NSS](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/Intro%20to%20R-NSS.md). If you want to try out R without installing it, you can do this on [RStudio Cloud](https://rstudio.cloud).  
+  
+For the tidyverse section, I provide a recommended order to work through materials for training. However, it is, of course, not necessary to follow this exactly – particularly if you feel you are already comfortable with some of the material. I leave it to the reader/participant to use this as they see fit.  
+  
+Finally, this is a work-in-progress and will need updating over time. Therefore, if you have suggestions, comments or feedback, please get in touch.
