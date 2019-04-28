@@ -145,6 +145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#reshaping-data-with-tidyr"><i class="fa fa-check"></i><b>2.4</b> Reshaping Data with tidyr</a></li>
 <li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#other-data-manipulation-tips"><i class="fa fa-check"></i><b>2.5</b> Other Data Manipulation Tips</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="tidyverse.html"><a href="tidyverse.html#datestimes"><i class="fa fa-check"></i><b>2.5.1</b> Dates/Times</a></li>
+<li class="chapter" data-level="2.5.2" data-path="tidyverse.html"><a href="tidyverse.html#strings"><i class="fa fa-check"></i><b>2.5.2</b> Strings</a></li>
+<li class="chapter" data-level="2.5.3" data-path="tidyverse.html"><a href="tidyverse.html#janitor"><i class="fa fa-check"></i><b>2.5.3</b> janitor</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#further-resources"><i class="fa fa-check"></i><b>2.6</b> Further Resources</a></li>
 </ul></li>
@@ -243,13 +245,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="other-data-manipulation-tips" class="section level2">
 <h2><span class="header-section-number">2.5</span> Other Data Manipulation Tips</h2>
-<p>As you progress further along with learning to manipulate data using the tidyverse, you will inevitably encounter situations where you need to know more about how to deal with specific types of data such as dates/times and string variables. In addition, there will also be times when you wish there was a convenient and quick way to process data – luckily there usually is in R.</p>
+<p>As you progress further along with learning to manipulate data using the tidyverse, you will inevitably encounter situations where you need to know more about how to deal with specific types of data such as dates/times and string variables. In addition, there will also be times when you wish there was a convenient and quick way to process data – luckily there usually is in R. Please note that some of the material mentioned in this section is probably optional until you specifically have a need for it but I recommend that you go through some of it anyway to build an awareness of where to look for solutions when you need it.</p>
 <div id="datestimes" class="section level3">
 <h3><span class="header-section-number">2.5.1</span> Dates/Times</h3>
 <p>The main package within the tidyverse for dealing with dates and times is the <a href="https://lubridate.tidyverse.org/reference/lubridate-package.html">lubridate</a> package. The main reference text for learning about how to work with dates/times using lubridate is the <a href="https://r4ds.had.co.nz/dates-and-times.html">dates and times chapter in R for Data Science</a>. Dates/times can sometimes be very complex (e.g. when thinking about time calculations across timezones) but it is likely that you will usually only need to perform fairly simple data processing operations involving dates. In this case, you will only really need to know a small number of functions from lubridate:</p>
 <ul>
 <li><code>dmy()</code>, <code>mdy()</code>, <code>ymd()</code> to convert text to a Date format in R, e.g. <code>ymd(&quot;2001/05/20&quot;)</code> would convert the text “2001/05/20” so that R can recognise this as 20 May 2001.</li>
 <li><code>year()</code>, <code>month()</code>, <code>day()</code> to extract the year, month, day from a date object, e.g. <code>year(ymd(&quot;2001/05/20&quot;))</code> would extract 2001.</li>
+</ul>
+</div>
+<div id="strings" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Strings</h3>
+<ul>
+<li>stringr package</li>
+<li>regular expressions</li>
+<li>strings chapter in R for Data Science</li>
+</ul>
+</div>
+<div id="janitor" class="section level3">
+<h3><span class="header-section-number">2.5.3</span> janitor</h3>
+<ul>
+<li><code>clean_names()</code>
+*<code>tabyl()</code></li>
 </ul>
 </div>
 </div>

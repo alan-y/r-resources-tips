@@ -18,4 +18,6 @@ This is a list of R resources, links and tips that is being curated to help part
   
 For the tidyverse section, I provide a recommended order to work through materials for training. However, it is, of course, not necessary to follow this exactly – particularly if you feel you are already comfortable with some of the material. I leave it to the reader/participant to use this as they see fit.  
   
+I am very grateful to [Sean Kross](https://twitter.com/seankross) for providing a simple-to-use [bookdown template](https://github.com/seankross/bookdown-start) to get me started, and of course, [Yihui Xie](https://twitter.com/xieyihui) for creating the fantastic [bookdown](https://bookdown.org) package.  
+  
 Finally, this is a work-in-progress and will need updating over time. Therefore, if you have suggestions, comments or feedback, please get in touch.
