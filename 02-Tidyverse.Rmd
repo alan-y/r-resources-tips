@@ -85,7 +85,7 @@ The main package within the tidyverse for dealing with dates and times is the [l
 ### janitor
 
 * `clean_names()`
-*`tabyl()`
+* `tabyl()`
 
 ## Further Resources
 [R for Data Science by Garrett Grolemund and Hadley Wickham](https://r4ds.had.co.nz)  
