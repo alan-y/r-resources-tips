@@ -70,17 +70,20 @@ Then you can try the [Reshape Data tutorial on RStudio Cloud](https://rstudio.cl
 ## Other Data Manipulation Tips
 As you progress further along with learning to manipulate data using the tidyverse, you will inevitably encounter situations where you need to know more about how to deal with specific types of data such as dates/times and string variables. In addition, there will also be times when you wish there was a convenient and quick way to process data – luckily there usually is in R. Please note that some of the material mentioned in this section is probably optional until you specifically have a need for it but I recommend that you go through some of it anyway to build an awareness of where to look for solutions when you need it.
 
+
 ### Dates/Times
-The main package within the tidyverse for dealing with dates and times is the [lubridate](https://lubridate.tidyverse.org/reference/lubridate-package.html) package. The main reference text for learning about how to work with dates/times using lubridate is the [dates and times chapter in R for Data Science](https://r4ds.had.co.nz/dates-and-times.html). Dates/times can sometimes be very complex (e.g. when thinking about time calculations across timezones) but it is likely that you will usually only need to perform fairly simple data processing operations involving dates. In this case, you will only really need to know a small number of functions from lubridate:
+The main package within the tidyverse for dealing with dates and times is the [lubridate](https://lubridate.tidyverse.org/reference/lubridate-package.html) package. This is not loaded with the core set of tidyverse packages so has to be loaded separately by typing `library(lubridate)`. The main reference text for learning about how to work with dates/times using lubridate is the [dates and times chapter in R for Data Science](https://r4ds.had.co.nz/dates-and-times.html). Dates/times can sometimes be very complex (e.g. when thinking about time calculations across timezones) but it is likely that you will usually only need to perform fairly simple data processing operations involving dates. In this case, you will only really need to know a small number of functions from lubridate:
 
 * `dmy()`, `mdy()`, `ymd()` to convert text to a Date format in R, e.g. `ymd("2001/05/20")` would convert the text "2001/05/20" so that R can recognise this as 20 May 2001.
 * `year()`, `month()`, `day()` to extract the year, month, day from a date object, e.g. `year(ymd("2001/05/20"))` would extract 2001.
 
+
 ### Strings
 
-* stringr package
-* regular expressions
-* strings chapter in R for Data Science
+The [stringr package](https://stringr.tidyverse.org) package is loaded within the core set of tidyverse packages and provides a set of consistent functions for working with string (or text) data. Again, the main reference is the [strings chapter in R for Data Science](https://r4ds.had.co.nz/strings.html). You will likely not need to know everything contained in that chapter but I would recommend learning some basics of using [regular expressions](https://www.regular-expressions.info). These can help to, for instance, filter data or create new variables according to some text pattern found in a string variable. This can sometimes be much quicker than filtering using a list of keywords, particularly if your data may contain variations on a common item (e.g. 'Male', 'M', 'Man') or mispellings (e.g. 'Mal').  
+  
+A useful place to practice and learn how to use regular expressions is [regexr](https://regexr.com). There is also an RStudio addin that may help called [regexplain](https://www.garrickadenbuie.com/project/regexplain) which was inspired by regexr but may help with your learning as it can be used within RStudio. Once you gain some familiarity on how to use regular expressions, many of the stringr functions should be relatively easy to understand and use. In particular, `str_detect()` is useful for filtering and creating variables.
+
 
 ### janitor
 
