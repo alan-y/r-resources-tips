@@ -7,7 +7,7 @@ This may be useful reading if you have never used R (or similar software for dat
 [What’s a variable in R?](http://rex-analytics.com/whats-variable-r)  
 
 ## Setting Up RStudio
-When you first load RStudio, you should set up some options within it. First go to the **Tools** menu and then go into the **Global Options**. In the **General** tab, you should untick 'Restore .RData into workspace at startup' and change 'Save workspace to .RData on exit' to 'Never'. This is illustrated in [the Workflow: projects chapter in the R for Data Science book]((https://r4ds.had.co.nz/workflow-projects.html#what-is-real)). Doing this helps to ensure that R loads in a *fresh session* every time which also helps to ensure your work is fully reproducible.  
+When you first load RStudio, you should set up some options within it. First go to the **Tools** menu and then go into the **Global Options**. In the **General** tab, you should untick 'Restore .RData into workspace at startup' and change 'Save workspace to .RData on exit' to 'Never'. This is illustrated in [the Workflow: projects chapter in the R for Data Science book](https://r4ds.had.co.nz/workflow-projects.html#what-is-real). Doing this helps to ensure that R loads in a *fresh session* every time which also helps to ensure your work is fully reproducible.  
   
 In addition to this, you should make sure R is set up to work with the [unicode character set](https://en.wikipedia.org/wiki/UTF-8) in case you ever need to use them. To do this, go to the **Code** tab (within Global Options) and then go to the **Saving** tab within there and make sure the 'default text encoding' is 'UTF-8'. 
   

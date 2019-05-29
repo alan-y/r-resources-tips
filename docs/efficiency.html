@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Efficiency | R Training Resources and Tips</title>
-  <meta name="description" content="Some R Training Resources and Tips.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Some R Training Resources and Tips." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Efficiency | R Training Resources and Tips" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="Some R Training Resources and Tips." />
   
 
-<meta name="author" content="Alan Yeung">
+<meta name="author" content="Alan Yeung" />
 
 
-<meta name="date" content="2019-04-28">
+<meta name="date" content="2019-05-29" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="tidyverse.html">
@@ -68,7 +67,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -225,7 +224,7 @@ n_ind &lt;-<span class="st"> </span><span class="kw">nrow</span>(geno)
 </div>
 <div id="avoiding-loops" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Avoiding Loops</h3>
-<p>Avoid loops if you can, use functional programming, e.g. <code>purrr::map()</code>. <strong>Note</strong>: loops are not necessarily slower but leave more room for the user to write them inefficiently.</p>
+<p>Avoid loops if you can, use functional programming, e.g. <code>purrr::map()</code>. <strong>Note</strong>: loops are not necessarily slower but leave more room for the user to write them inefficiently.</p>
 </div>
 <div id="finding-slow-parts-of-code" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Finding Slow Parts of Code</h3>
@@ -251,7 +250,7 @@ n_ind &lt;-<span class="st"> </span><span class="kw">nrow</span>(geno)
 </div>
 <div id="importing-and-exporting-data" class="section level2">
 <h2><span class="header-section-number">3.4</span> Importing and Exporting Data</h2>
-<p>For critical analyses, I still find the base R functions (e.g. <code>read.csv()</code>) to be most reliable but <code>readr::read_csv()</code> is much faster.</p>
+<p>For critical analyses, I still find the base R functions (e.g. <code>read.csv()</code>) to be most reliable but <code>readr::read_csv()</code> is much faster.</p>
 <p><a href="https://github.com/jimhester/vroom">vroom</a> - experimental package using the <a href="https://svn.r-project.org/R/branches/ALTREP/ALTREP.html">ALTREP</a> framework but potentially extremely fast package for reading delimited files.</p>
 <p><a href="https://cran.r-project.org/web/packages/writexl/index.html">writexl</a> - the fastest package for writing to Excel and has no dependencies.</p>
 

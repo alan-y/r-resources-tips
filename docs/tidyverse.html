@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Tidyverse | R Training Resources and Tips</title>
-  <meta name="description" content="Some R Training Resources and Tips.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Some R Training Resources and Tips." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Tidyverse | R Training Resources and Tips" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="Some R Training Resources and Tips." />
   
 
-<meta name="author" content="Alan Yeung">
+<meta name="author" content="Alan Yeung" />
 
 
-<meta name="date" content="2019-04-28">
+<meta name="date" content="2019-05-29" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="getting-started.html">
@@ -68,7 +67,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -250,14 +249,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.5.1</span> Dates/Times</h3>
 <p>The main package within the tidyverse for dealing with dates and times is the <a href="https://lubridate.tidyverse.org/reference/lubridate-package.html">lubridate</a> package. This is not loaded with the core set of tidyverse packages so has to be loaded separately by typing <code>library(lubridate)</code>. The main reference text for learning about how to work with dates/times using lubridate is the <a href="https://r4ds.had.co.nz/dates-and-times.html">dates and times chapter in R for Data Science</a>. Dates/times can sometimes be very complex (e.g. when thinking about time calculations across timezones) but it is likely that you will usually only need to perform fairly simple data processing operations involving dates. In this case, you will only really need to know a small number of functions from lubridate:</p>
 <ul>
-<li><code>dmy()</code>, <code>mdy()</code>, <code>ymd()</code> to convert text to a Date format in R, e.g. <code>ymd(&quot;2001/05/20&quot;)</code> would convert the text “2001/05/20” so that R can recognise this as 20 May 2001.</li>
-<li><code>year()</code>, <code>month()</code>, <code>day()</code> to extract the year, month, day from a date object, e.g. <code>year(ymd(&quot;2001/05/20&quot;))</code> would extract 2001.</li>
+<li><code>dmy()</code>, <code>mdy()</code>, <code>ymd()</code> to convert text to a Date format in R, e.g. <code>ymd("2001/05/20")</code> would convert the text “2001/05/20” so that R can recognise this as 20 May 2001.</li>
+<li><code>year()</code>, <code>month()</code>, <code>day()</code> to extract the year, month, day from a date object, e.g. <code>year(ymd("2001/05/20"))</code> would extract 2001.</li>
 </ul>
 </div>
 <div id="strings" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> Strings</h3>
-<p>The <a href="https://stringr.tidyverse.org">stringr package</a> package is loaded within the core set of tidyverse packages and provides a set of consistent functions for working with string (or text) data. Again, the main reference is the <a href="https://r4ds.had.co.nz/strings.html">strings chapter in R for Data Science</a>. You will likely not need to know everything contained in that chapter but I would recommend learning some basics of using <a href="https://www.regular-expressions.info">regular expressions</a>. These can help to, for instance, filter data or create new variables according to some text pattern found in a string variable. This can sometimes be much quicker than filtering using a list of keywords, particularly if your data may contain variations on a common item (e.g. ‘Male’, ‘M’, ‘Man’) or mispellings (e.g. ‘Mal’).</p>
+<p>The <a href="https://stringr.tidyverse.org">stringr package</a> package is loaded within the core set of tidyverse packages and provides a set of consistent functions for working with string (or text) data. Again, the main reference is the <a href="https://r4ds.had.co.nz/strings.html">strings chapter in R for Data Science</a>. You will likely not need to know everything contained in that chapter but I would recommend learning some basics of using <a href="https://www.regular-expressions.info">regular expressions</a>. These can help to, for instance, filter data or create new variables according to some text pattern found in a string variable. This can sometimes be much quicker than filtering using a list of keywords, particularly if your data may contain variations on a common item (e.g. ‘Male’, ‘M’, ‘Man’) or mispellings (e.g. ‘Mal’).</p>
 <p>A useful place to practice and learn how to use regular expressions is <a href="https://regexr.com">regexr</a>. There is also an RStudio addin that may help called <a href="https://www.garrickadenbuie.com/project/regexplain">regexplain</a> which was inspired by regexr but may help with your learning as it can be used within RStudio. Once you gain some familiarity on how to use regular expressions, many of the stringr functions should be relatively easy to understand and use. In particular, <code>str_detect()</code> is useful for filtering and creating variables.</p>
+<p>If you are already familiar with regular expressions using base R functions and want to find out about their stringr equivalents to take advantage of the consistencies in their design, the <a href="https://stringr.tidyverse.org/articles/from-base.html">from base R to stringr vignette</a> is a handy resource. Furthermore, this blog post on <a href="https://blog.rsquaredacademy.com/regular-expression-in-r">Demystifying Regular Expressions in R</a> gives a very clear and descriptive guide to how the different base R regular expression functions work.</p>
 </div>
 <div id="janitor" class="section level3">
 <h3><span class="header-section-number">2.5.3</span> janitor</h3>
