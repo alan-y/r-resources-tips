@@ -1,7 +1,7 @@
 --- 
 title: "R Training Resources and Tips"
 author: "Alan Yeung"
-date: "29 May 2019"
+date: "11 June 2019"
 bibliography: book.bib
 description: Some R Training Resources and Tips.
 documentclass: book

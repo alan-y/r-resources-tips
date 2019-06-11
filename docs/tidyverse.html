@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Tidyverse | R Training Resources and Tips</title>
   <meta name="description" content="Some R Training Resources and Tips." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Tidyverse | R Training Resources and Tips" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Alan Yeung" />
 
 
-<meta name="date" content="2019-05-29" />
+<meta name="date" content="2019-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-manipulation-with-dplyr" class="section level2">
 <h2><span class="header-section-number">2.3</span> Data Manipulation with dplyr</h2>
 <p><a href="https://dplyr.tidyverse.org">dplyr</a> provides a set of functions (often described as <em>verbs</em>) to help with data manipulation. Most common tasks can be done using only a handful of functions: <code>select()</code>, <code>filter()</code>, <code>mutate()</code>, <code>rename()</code>, <code>arrange()</code>, <code>summarise()</code> and <code>group_by()</code> – note that <code>rename()</code> is not usually included in this list but I have included it as renaming variables comes up a lot during data cleaning/processing. Out of these functions, <code>group_by()</code> is the most complex and should probably be tackled after understanding the others; in particular, it is often used together with <code>summarise()</code>. Furthermore, two functions that often come in handy when used together with <code>mutate()</code> are <code>ifelse()</code> (or the stricter dplyr equivalent <a href="https://dplyr.tidyverse.org/reference/if_else.html"><code>if_else()</code></a>) and <a href="https://dplyr.tidyverse.org/reference/case_when.html"><code>case_when()</code></a> – these help to create new variables depending on certain conditions being met.</p>
-<p>It is a good idea to understand what each of these functions does on their own first before thinking about how to <em>combine</em> multiple manipulation steps together using <a href="https://r4ds.had.co.nz/pipes.html">pipes (<code>%&gt;%</code>)</a>. Once you are comfortable with each of these functions, it should be a relatively small step to learn how to combine them together with the pipe operator; the ability to do this in a way that is relatively intuitive is one of the most powerful design features of the tidyverse. I would recommend spending a good amount of time learning dplyr as you will want to reach the point where you can use these functions without requiring much thinking.</p>
+<p>It is a good idea to understand what each of these functions does on their own first before thinking about how to <em>combine</em> multiple manipulation steps together using <a href="https://r4ds.had.co.nz/pipes.html">pipes (<code>%&gt;%</code>)</a>. Once you are comfortable with each of these functions, it should be a relatively small step to learn how to combine them together with the pipe operator; the ability to do this in a way that is relatively intuitive is one of the most powerful design features of the tidyverse. This is more or less the learning order used in the <a href="https://bookdown.org/rdpeng/rprogdatascience/managing-data-frames-with-the-dplyr-package.html">dplyr chapter of the R Programming for Data Science book</a> which is worth a read through (there is also an accompanying video for that chapter which may also help). I would definitely recommend spending a good amount of time learning dplyr as you will want to reach the point where you can use these functions without requiring much thinking.</p>
 <p>A good place to get started on learning about these functions are these videos.<br />
 <a href="https://www.youtube.com/watch?v=Zc_ufg4uW4U&amp;list=PL9HYL-VRX0oQOWAFoKHFQAsWAI3ImbNPk&amp;index=3">Data Manipulation Tools: dplyr – Pt 3 Intro to the Grammar of Data Manipulation with R</a><br />
 <a href="https://www.youtube.com/watch?v=jWjqLW-u3hc">Hands-on dplyr tutorial for faster data manipulation in R</a> – note that this tutorial is a little old (2014) so some parts of it are out-of-date but I think it is still useful. Only minor changes will be needed to make this current and the old dplyr functions mentioned should still be useable anyway. For example, they use <code>tbl_df()</code> which can now be replaced by <code>tibble()</code> instead. You should try running the R commands yourself while watching this video to aid the learning process.</p>
