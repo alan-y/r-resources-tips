@@ -94,4 +94,6 @@ If you are already familiar with regular expressions using base R functions and 
 
 ## Further Resources
 [R for Data Science by Garrett Grolemund and Hadley Wickham](https://r4ds.had.co.nz)  
-[R for Data Science: Exercise Solutions by Jeffrey B. Arnold](https://jrnold.github.io/r4ds-exercise-solutions)
+[R for Data Science: Exercise Solutions by Jeffrey B. Arnold](https://jrnold.github.io/r4ds-exercise-solutions)  
+[Yet another 'R for Data Science' study guide by Bryan Shalloway](https://brshallo.github.io/r4ds_solutions)  
+[YaRrr! The Pirate’s Guide to R](https://bookdown.org/ndphillips/YaRrr)
