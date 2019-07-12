@@ -1,7 +1,9 @@
 book_filename: "R-Resources-Tips"
 chapter_name: "Chapter "
-repo:
+repo: https://github.com/alan-y/r-resources-tips/
+edit: https://github.com/alan-y/r-resources-tips/edit/master/%s
 output_dir: docs
 rmd_files: ["index.Rmd", "01-Getting-Started.Rmd", "02-Tidyverse.Rmd", "03-Efficiency.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 new_session: yes
+delete_merged_file: true

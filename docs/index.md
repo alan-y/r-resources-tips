@@ -1,15 +1,15 @@
 --- 
 title: "R Training Resources and Tips"
 author: "Alan Yeung"
-date: "30 June 2019"
+date: "12 July 2019"
 bibliography: book.bib
 description: Some R Training Resources and Tips.
 documentclass: book
-github-repo: null
+github-repo: https://github.com/alan-y/r-resources-tips/
 link-citations: yes
 site: bookdown::bookdown_site
 biblio-style: apalike
-url: null
+url: 'https\://alan-y.github.io/r-resources-tips/'
 ---
 
 # Introduction {-}

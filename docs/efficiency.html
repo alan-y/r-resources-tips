@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Efficiency | R Training Resources and Tips</title>
   <meta name="description" content="Some R Training Resources and Tips." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Efficiency | R Training Resources and Tips" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="null" />
+  <meta property="og:url" content="https://alan-y.github.io/r-resources-tips/" />
   
   <meta property="og:description" content="Some R Training Resources and Tips." />
-  <meta name="github-repo" content="null" />
+  <meta name="github-repo" content="https://github.com/alan-y/r-resources-tips/" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Efficiency | R Training Resources and Tips" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Alan Yeung" />
 
 
-<meta name="date" content="2019-06-30" />
+<meta name="date" content="2019-07-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,7 +55,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -195,28 +194,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="for-loops" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> For Loops</h3>
 <p>Never grow a vector, preallocate the size of objects used to store results.</p>
-<pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span><span class="kw">integer</span>(<span class="dv">50</span>)
-
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>) {
-    out[i] &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dv">10</span>)
-}</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">out &lt;-<span class="st"> </span><span class="kw">integer</span>(<span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>) {</a>
+<a class="sourceLine" id="cb2-4" title="4">    out[i] &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb2-5" title="5">}</a></code></pre></div>
 <p>Use <a href="https://onunicornsandgenes.blog/2018/12/01/using-r-the-best-thing-ive-changed-about-my-code-in-years/">descriptive indices</a> in loops to make them easier to understand.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First attempt</span>
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(geno)) {
-   <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(geno)) {
-        output[i,j] &lt;-<span class="st"> </span><span class="kw">do_something</span>(geno[j, i])
-   }
-}
-
-<span class="co"># Second attempt</span>
-n_markers &lt;-<span class="st"> </span><span class="kw">ncol</span>(geno)
-n_ind &lt;-<span class="st"> </span><span class="kw">nrow</span>(geno)
-<span class="cf">for</span> (marker_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_markers) {
-   <span class="cf">for</span> (individual_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_ind) {
-        output[individual_ix, marker_ix] &lt;-
-<span class="st">            </span><span class="kw">do_something</span>(geno[individual_ix, marker_ix])
-   }
-}</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># First attempt</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(geno)) {</a>
+<a class="sourceLine" id="cb3-3" title="3">   <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(geno)) {</a>
+<a class="sourceLine" id="cb3-4" title="4">        output[i,j] &lt;-<span class="st"> </span><span class="kw">do_something</span>(geno[j, i])</a>
+<a class="sourceLine" id="cb3-5" title="5">   }</a>
+<a class="sourceLine" id="cb3-6" title="6">}</a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co"># Second attempt</span></a>
+<a class="sourceLine" id="cb3-9" title="9">n_markers &lt;-<span class="st"> </span><span class="kw">ncol</span>(geno)</a>
+<a class="sourceLine" id="cb3-10" title="10">n_ind &lt;-<span class="st"> </span><span class="kw">nrow</span>(geno)</a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="cf">for</span> (marker_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_markers) {</a>
+<a class="sourceLine" id="cb3-12" title="12">   <span class="cf">for</span> (individual_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_ind) {</a>
+<a class="sourceLine" id="cb3-13" title="13">        output[individual_ix, marker_ix] &lt;-</a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="st">            </span><span class="kw">do_something</span>(geno[individual_ix, marker_ix])</a>
+<a class="sourceLine" id="cb3-15" title="15">   }</a>
+<a class="sourceLine" id="cb3-16" title="16">}</a></code></pre></div>
 <p>If you really need to a grow a vector:</p>
 <p><img src="images/tweet_grow_vec.png" width="60%" /></p>
 <p>Parallel Processing [need to do some research on this, see <a href="https://cran.r-project.org/web/packages/future/index.html">future</a> package].</p>
@@ -292,8 +291,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/alan-y/r-resources-tips/edit/master/03-Efficiency.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
