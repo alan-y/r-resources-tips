@@ -90,8 +90,46 @@ If you are already familiar with regular expressions using base R functions and 
 
 ### janitor
 
-* `clean_names()`
-* `tabyl()`
+> The [janitor package](https://garthtarr.github.io/meatR/janitor.html) is a R package that has simple functions for examining and cleaning dirty data. It was built with beginning and intermediate R users in mind and is optimised for user-friendliness.
+
+A really neat function from janitor is [`clean_names()`](https://garthtarr.github.io/meatR/janitor.html#clean_names()). This function has various different options for cleaning variables names but the defaults usually work quite well -- this will transform variable names into lower-case and [snake-case](https://en.wikipedia.org/wiki/Snake_case). We can use the iris dataset to see how this looks (note that `::` can be used before a function name to specify the package that the function comes from).
+
+
+```r
+names(iris)
+```
+
+```
+## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width" 
+## [5] "Species"
+```
+
+```r
+names(janitor::clean_names(iris))
+```
+
+```
+## [1] "sepal_length" "sepal_width"  "petal_length" "petal_width" 
+## [5] "species"
+```
+
+This variable name cleaning can also be applied at the same time as reading in a data file. For example, when reading in an Excel file, you can use something like `readxl::read_excel("excel_file", .name_repair = janitor::make_clean_names)`.  
+  
+Another function from janitor that is quite useful is [`tabyl()`](https://garthtarr.github.io/meatR/janitor.html#tabyl()). This creates tables of counts, including cross-tabulations and outputs to dataframe format -- this is the main benefit over using something like `table()` from base R as dataframes are often easier to manipulate, particularly with the help of the myriad tidyverse functions.
+
+
+```r
+janitor::tabyl(mtcars, cyl, gear)
+```
+
+```
+##  cyl  3 4 5
+##    4  1 8 2
+##    6  2 4 1
+##    8 12 0 2
+```
+
+
 
 ## Further Resources
 [R for Data Science by Garrett Grolemund and Hadley Wickham](https://r4ds.had.co.nz)  
