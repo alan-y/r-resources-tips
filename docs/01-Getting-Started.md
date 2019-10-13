@@ -5,6 +5,7 @@ This may be useful reading if you have never used R (or similar software for dat
 [R for Excel users](http://rex-analytics.com/r-for-excel-users)  
 [Where do things live in R? R for Excel Users](http://rex-analytics.com/things-live-r-r-excel-users)  
 [What’s a variable in R?](http://rex-analytics.com/whats-variable-r)  
+[A Guide to R for Excel Users](https://rfortherestofus.com/2019/06/a-guide-to-r-for-excel-users)
 
 ## Setting Up RStudio
 When you first load RStudio, you should set up some options within it. First go to the **Tools** menu and then go into the **Global Options**. In the **General** tab, you should untick 'Restore .RData into workspace at startup' and change 'Save workspace to .RData on exit' to 'Never'. This is illustrated in [the Workflow: projects chapter in the R for Data Science book](https://r4ds.had.co.nz/workflow-projects.html#what-is-real). Doing this helps to ensure that R loads in a *fresh session* every time which also helps to ensure your work is fully reproducible.  

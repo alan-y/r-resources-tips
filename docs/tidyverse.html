@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Tidyverse | R Training Resources and Tips</title>
   <meta name="description" content="Some R Training Resources and Tips." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Tidyverse | R Training Resources and Tips" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Alan Yeung" />
 
 
-<meta name="date" content="2019-08-04" />
+<meta name="date" content="2019-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getting-started.html">
-<link rel="next" href="efficiency.html">
+<link rel="prev" href="getting-started.html"/>
+<link rel="next" href="efficiency.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,9 +53,9 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -61,16 +64,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -196,8 +197,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="installation" class="section level2">
 <h2><span class="header-section-number">2.1</span> Installation</h2>
 <p>The package can be installed and loaded with</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tidyverse.html#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb1-2"><a href="tidyverse.html#cb1-2"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>This loads the core set of tidyverse packages – see <a href="https://www.tidyverse.org/packages">here</a> for more details.</p>
 </div>
 <div id="getting-data-into-r" class="section level2">
@@ -231,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.3.1</span> Working with Multiple Datasets</h3>
 <p>It is very likely that you will need to perform data linkage at some point so this makes it more or less essential to learn how to work with the various <em>joining</em> functions within dplyr. To get a quick overview on this, you can watch this short video.<br />
 <a href="https://www.youtube.com/watch?v=AuBgYDCg1Cg&amp;list=PL9HYL-VRX0oQOWAFoKHFQAsWAI3ImbNPk&amp;index=4">Working with Two Datasets: Binds, Set Operations, and Joins – Pt 4 Intro to Data Manipulation</a></p>
-<p>After this short introduction, I recommend reading three short sections of the relational data chapter in the R for Data Science book: <a href="https://r4ds.had.co.nz/relational-data.html#understanding-joins">Understanding joins</a>, <a href="https://r4ds.had.co.nz/relational-data.html#inner-join">Inner join</a>, <a href="https://r4ds.had.co.nz/relational-data.html#outer-join">Outer joins</a>.</p>
+<p>These <a href="https://github.com/batpigandme/tidyexplain/tree/pivot">neat animations</a> then offer a great illustration of how these joins work and a <a href="https://stat545.com/join-cheatsheet.html">cheatsheet by stat545</a> summarises this further. After this, I recommend reading three short sections of the relational data chapter in the R for Data Science book: <a href="https://r4ds.had.co.nz/relational-data.html#understanding-joins">Understanding joins</a>, <a href="https://r4ds.had.co.nz/relational-data.html#inner-join">Inner join</a>, <a href="https://r4ds.had.co.nz/relational-data.html#outer-join">Outer joins</a>.</p>
 <p>Then you can follow this video tutorial – the parts about joins start from around 25 minutes into the video but if you want to further solidify your dplyr knowledge, you can watch it from the beginning. Again, note that this video is a little old (2015) so some aspects may be out-of-date but it is still useful nevertheless.<br />
 <a href="https://www.youtube.com/watch?v=2mh1PqfsXVI">Going deeper with dplyr: New features in 0.3 and 0.4 (tutorial)</a></p>
 <p>There is also a <a href="https://rstudio.cloud/learn/primers/4.3">Join Data Sets tutorial on RStudio Cloud</a> that you can try. Finally, you will want to read and work through all of <a href="https://r4ds.had.co.nz/relational-data.html">relational data chapter in the R for Data Science book</a> to understand how to work with multiple related datasets more thoroughly. By the end, you should be familiar with just about everything on this <a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">Data Transformation Cheat Sheet</a>.</p>
@@ -266,15 +267,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The <a href="https://garthtarr.github.io/meatR/janitor.html">janitor package</a> is a R package that has simple functions for examining and cleaning dirty data. It was built with beginning and intermediate R users in mind and is optimised for user-friendliness.</p>
 </blockquote>
 <p>A really neat function from janitor is <a href="https://garthtarr.github.io/meatR/janitor.html#clean_names()"><code>clean_names()</code></a>. This function has various different options for cleaning variables names but the defaults usually work quite well – this will transform variable names into lower-case and <a href="https://en.wikipedia.org/wiki/Snake_case">snake-case</a>. We can use the iris dataset to see how this looks (note that <code>::</code> can be used before a function name to specify the package that the function comes from).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tidyverse.html#cb2-1"></a><span class="kw">names</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">names</span>(iris)</a></code></pre></div>
 <pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot; 
 ## [5] &quot;Species&quot;</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tidyverse.html#cb4-1"></a><span class="kw">names</span>(janitor<span class="op">::</span><span class="kw">clean_names</span>(iris))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">names</span>(janitor<span class="op">::</span><span class="kw">clean_names</span>(iris))</a></code></pre></div>
 <pre><code>## [1] &quot;sepal_length&quot; &quot;sepal_width&quot;  &quot;petal_length&quot; &quot;petal_width&quot; 
 ## [5] &quot;species&quot;</code></pre>
 <p>This variable name cleaning can also be applied at the same time as reading in a data file. For example, when reading in an Excel file, you can use something like <code>readxl::read_excel("excel_file", .name_repair = janitor::make_clean_names)</code>.</p>
 <p>Another function from janitor that is quite useful is <a href="https://garthtarr.github.io/meatR/janitor.html#tabyl()"><code>tabyl()</code></a>. This creates tables of counts, including cross-tabulations and outputs to dataframe format – this is the main benefit over using something like <code>table()</code> from base R as dataframes are often easier to manipulate, particularly with the help of the myriad tidyverse functions.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="tidyverse.html#cb6-1"></a>janitor<span class="op">::</span><span class="kw">tabyl</span>(mtcars, cyl, gear)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">janitor<span class="op">::</span><span class="kw">tabyl</span>(mtcars, cyl, gear)</a></code></pre></div>
 <pre><code>##  cyl  3 4 5
 ##    4  1 8 2
 ##    6  2 4 1
@@ -301,11 +302,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
