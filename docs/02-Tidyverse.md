@@ -100,8 +100,7 @@ names(iris)
 ```
 
 ```
-## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width" 
-## [5] "Species"
+## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"
 ```
 
 ```r
@@ -109,8 +108,7 @@ names(janitor::clean_names(iris))
 ```
 
 ```
-## [1] "sepal_length" "sepal_width"  "petal_length" "petal_width" 
-## [5] "species"
+## [1] "sepal_length" "sepal_width"  "petal_length" "petal_width"  "species"
 ```
 
 This variable name cleaning can also be applied at the same time as reading in a data file. For example, when reading in an Excel file, you can use something like `readxl::read_excel("excel_file", .name_repair = janitor::make_clean_names)`.  

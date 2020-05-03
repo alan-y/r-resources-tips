@@ -20,7 +20,7 @@ You can go further than this and think about whether or not you can aggregate da
 
 ### Extracting Data from SMRA
 
-For those working within the NHS in Scotland, Emily Moore has written a paper about [Using R with SMRA](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-1.pdf) (SMRA is a large relational database containing Scottish morbidity records). This paper gives detail about how to connect to the database using RStudio and also provides guidance on making efficient queries using SQL within R.
+For those working within the NHS in Scotland, Emily Moore has written a paper about [Using R with SMRA](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/using%20SMRA%20with%20R.md) (SMRA is a large relational database containing Scottish morbidity records). This paper gives detail about how to connect to the database using RStudio and also provides guidance on making efficient queries using SQL within R.
 
 ### dbplyr
 

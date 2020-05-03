@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Efficiency | R Training Resources and Tips</title>
   <meta name="description" content="Some R Training Resources and Tips." />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Efficiency | R Training Resources and Tips" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Alan Yeung" />
 
 
-<meta name="date" content="2019-10-13" />
+<meta name="date" content="2020-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,9 +53,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -204,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can go further than this and think about whether or not you can aggregate data before bringing it into R. This is a particularly good idea when extracting <em>non-aggregated</em> records would still result in extracting huge amounts of data (even after carefully considering some the questions mentioned above). In SQL, this is usually done using <code>GROUP BY</code>, combined with something like <code>COUNT</code>.</p>
 <div id="extracting-data-from-smra" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Extracting Data from SMRA</h3>
-<p>For those working within the NHS in Scotland, Emily Moore has written a paper about <a href="https://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-1.pdf">Using R with SMRA</a> (SMRA is a large relational database containing Scottish morbidity records). This paper gives detail about how to connect to the database using RStudio and also provides guidance on making efficient queries using SQL within R.</p>
+<p>For those working within the NHS in Scotland, Emily Moore has written a paper about <a href="https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/using%20SMRA%20with%20R.md">Using R with SMRA</a> (SMRA is a large relational database containing Scottish morbidity records). This paper gives detail about how to connect to the database using RStudio and also provides guidance on making efficient queries using SQL within R.</p>
 </div>
 <div id="dbplyr" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> dbplyr</h3>
@@ -222,30 +224,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="for-loops" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> For Loops</h3>
 <p>Never grow a vector, preallocate the size of objects used to store results.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">out &lt;-<span class="st"> </span><span class="kw">integer</span>(<span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb8-2" title="2"></a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>) {</a>
-<a class="sourceLine" id="cb8-4" title="4">    out[i] &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb8-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="efficiency.html#cb8-1"></a>out &lt;-<span class="st"> </span><span class="kw">integer</span>(<span class="dv">50</span>)</span>
+<span id="cb8-2"><a href="efficiency.html#cb8-2"></a></span>
+<span id="cb8-3"><a href="efficiency.html#cb8-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>) {</span>
+<span id="cb8-4"><a href="efficiency.html#cb8-4"></a>    out[i] &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb8-5"><a href="efficiency.html#cb8-5"></a>}</span></code></pre></div>
 <p>Use <a href="https://onunicornsandgenes.blog/2018/12/01/using-r-the-best-thing-ive-changed-about-my-code-in-years/">descriptive indices</a> in loops to make them easier to understand.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># First attempt</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(geno)) {</a>
-<a class="sourceLine" id="cb9-3" title="3">   <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(geno)) {</a>
-<a class="sourceLine" id="cb9-4" title="4">        output[i,j] &lt;-<span class="st"> </span><span class="kw">do_something</span>(geno[j, i])</a>
-<a class="sourceLine" id="cb9-5" title="5">   }</a>
-<a class="sourceLine" id="cb9-6" title="6">}</a>
-<a class="sourceLine" id="cb9-7" title="7"></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="co"># Second attempt</span></a>
-<a class="sourceLine" id="cb9-9" title="9">n_markers &lt;-<span class="st"> </span><span class="kw">ncol</span>(geno)</a>
-<a class="sourceLine" id="cb9-10" title="10">n_ind &lt;-<span class="st"> </span><span class="kw">nrow</span>(geno)</a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="cf">for</span> (marker_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_markers) {</a>
-<a class="sourceLine" id="cb9-12" title="12">   <span class="cf">for</span> (individual_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_ind) {</a>
-<a class="sourceLine" id="cb9-13" title="13">        output[individual_ix, marker_ix] &lt;-</a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="st">            </span><span class="kw">do_something</span>(geno[individual_ix, marker_ix])</a>
-<a class="sourceLine" id="cb9-15" title="15">   }</a>
-<a class="sourceLine" id="cb9-16" title="16">}</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="efficiency.html#cb9-1"></a><span class="co"># First attempt</span></span>
+<span id="cb9-2"><a href="efficiency.html#cb9-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(geno)) {</span>
+<span id="cb9-3"><a href="efficiency.html#cb9-3"></a>   <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(geno)) {</span>
+<span id="cb9-4"><a href="efficiency.html#cb9-4"></a>        output[i,j] &lt;-<span class="st"> </span><span class="kw">do_something</span>(geno[j, i])</span>
+<span id="cb9-5"><a href="efficiency.html#cb9-5"></a>   }</span>
+<span id="cb9-6"><a href="efficiency.html#cb9-6"></a>}</span>
+<span id="cb9-7"><a href="efficiency.html#cb9-7"></a></span>
+<span id="cb9-8"><a href="efficiency.html#cb9-8"></a><span class="co"># Second attempt</span></span>
+<span id="cb9-9"><a href="efficiency.html#cb9-9"></a>n_markers &lt;-<span class="st"> </span><span class="kw">ncol</span>(geno)</span>
+<span id="cb9-10"><a href="efficiency.html#cb9-10"></a>n_ind &lt;-<span class="st"> </span><span class="kw">nrow</span>(geno)</span>
+<span id="cb9-11"><a href="efficiency.html#cb9-11"></a><span class="cf">for</span> (marker_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_markers) {</span>
+<span id="cb9-12"><a href="efficiency.html#cb9-12"></a>   <span class="cf">for</span> (individual_ix <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_ind) {</span>
+<span id="cb9-13"><a href="efficiency.html#cb9-13"></a>        output[individual_ix, marker_ix] &lt;-</span>
+<span id="cb9-14"><a href="efficiency.html#cb9-14"></a><span class="st">            </span><span class="kw">do_something</span>(geno[individual_ix, marker_ix])</span>
+<span id="cb9-15"><a href="efficiency.html#cb9-15"></a>   }</span>
+<span id="cb9-16"><a href="efficiency.html#cb9-16"></a>}</span></code></pre></div>
 <p>If you really need to a grow a vector:</p>
-<p><img src="images/tweet_grow_vec.png" width="60%" /></p>
+<p><img src="images/tweet_grow_vec.PNG" width="60%" /></p>
 <p>Parallel Processing [need to do some research on this, see <a href="https://cran.r-project.org/web/packages/future/index.html">future</a> package].</p>
 <p><a href="http://adv-r.had.co.nz/Rcpp.html">Rcpp</a> - loops are faster using this.</p>
 </div>
@@ -297,12 +299,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -314,6 +315,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

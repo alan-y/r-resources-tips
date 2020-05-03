@@ -23,6 +23,7 @@ To use R effectively, it is more or less essential to learn how to use the help 
   
 Help pages for functions in R can be brought up by typing `?name-of-function` within R, e.g. to get the help for the `mean()` function, you can type `?mean`. Equally, `help(name-of-function)` also works, e.g. `help(mean)`. The help pages in R can be a little daunting at first so it is good to start by understanding the layout of a help page and what everything in it means.  
 [How to read a help page in R](http://socviz.co/appendix.html#a-little-more-about-r)  
+[Analysis essentials: Using the help page for a function in R](https://aosmith.rbind.io/2020/04/28/r-documentation/)  
   
 In addition to the help pages within R, there are also many other ways to get help.  
 [Where to get help with your R question?](https://masalmon.eu/2018/07/22/wheretogethelp)
