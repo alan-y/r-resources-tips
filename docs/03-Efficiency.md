@@ -16,7 +16,7 @@ Within this, there are some further sub-questions you should ask yourself every 
 
 If you think about just these questions carefully enough before extracting data, often the amount of data you actually download into R will be much smaller compared with extracting an entire database into R (particularly if the database is very large). Working with this smaller amount of data can often already result in large efficiency gains from both a memory-management and processing perspective (less data gets loaded into R and performing data processing on smaller objects can be much faster).  
   
-You can go further than this and think about whether or not you can aggregate data before bringing it into R. This is a particularly good idea when extracting *non-aggregated* records would still result in extracting huge amounts of data (even after carefully considering some the questions mentioned above). In SQL, this is usually done using `GROUP BY`, combined with something like `COUNT`.  
+You can go further than this and think about whether or not you can aggregate data before bringing it into R. This is a particularly good idea when extracting *non-aggregated* records would still result in extracting huge amounts of data (even after carefully considering some the questions mentioned above). In SQL, this is usually done using `GROUP BY`, combined with something like `COUNT`. If you are already familiar with SQL, you can take advantage of this in RStudio as [SQL code chunks can be used directly within RMarkdown](https://irene.rbind.io/post/using-sql-in-rstudio).
 
 ### Extracting Data from SMRA
 

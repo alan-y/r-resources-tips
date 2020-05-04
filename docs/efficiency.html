@@ -24,7 +24,7 @@
 <meta name="author" content="Alan Yeung" />
 
 
-<meta name="date" content="2020-05-03" />
+<meta name="date" content="2020-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -203,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>For these variables, do I actually need all of the records in a database to solve my problem or just a subset of records? For example, do I just need records covering a particular time period? In SQL, this part is usually taken care of using <code>WHERE</code> and specifying filtering conditions.</li>
 </ol>
 <p>If you think about just these questions carefully enough before extracting data, often the amount of data you actually download into R will be much smaller compared with extracting an entire database into R (particularly if the database is very large). Working with this smaller amount of data can often already result in large efficiency gains from both a memory-management and processing perspective (less data gets loaded into R and performing data processing on smaller objects can be much faster).</p>
-<p>You can go further than this and think about whether or not you can aggregate data before bringing it into R. This is a particularly good idea when extracting <em>non-aggregated</em> records would still result in extracting huge amounts of data (even after carefully considering some the questions mentioned above). In SQL, this is usually done using <code>GROUP BY</code>, combined with something like <code>COUNT</code>.</p>
+<p>You can go further than this and think about whether or not you can aggregate data before bringing it into R. This is a particularly good idea when extracting <em>non-aggregated</em> records would still result in extracting huge amounts of data (even after carefully considering some the questions mentioned above). In SQL, this is usually done using <code>GROUP BY</code>, combined with something like <code>COUNT</code>. If you are already familiar with SQL, you can take advantage of this in RStudio as <a href="https://irene.rbind.io/post/using-sql-in-rstudio">SQL code chunks can be used directly within RMarkdown</a>.</p>
 <div id="extracting-data-from-smra" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Extracting Data from SMRA</h3>
 <p>For those working within the NHS in Scotland, Emily Moore has written a paper about <a href="https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/using%20SMRA%20with%20R.md">Using R with SMRA</a> (SMRA is a large relational database containing Scottish morbidity records). This paper gives detail about how to connect to the database using RStudio and also provides guidance on making efficient queries using SQL within R.</p>
